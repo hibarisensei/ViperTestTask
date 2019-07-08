@@ -14,7 +14,7 @@ struct API {
 
 protocol Endpoint {
     var path: String { get }
-    var url: String { get }
+    var url: URL? { get }
 }
 
 
@@ -34,9 +34,9 @@ enum Endpoints {
             }
         }
         
-        public var url: String {
+        public var url: URL? {
             switch self {
-            case .fetch: return "\(API.baseUrl)\(path)"
+            case .fetch: return URL(string: "\(API.baseUrl)\(path)")
             }
         }
     }

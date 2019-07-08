@@ -8,12 +8,22 @@
 
 import UIKit
 
-class PostListRemoteDataManager:PostListRemoteDataManagerInputProtocol {
+class PostListRemoteDataManager:PostListRemoteDataManagerInputProtocol {    
     
+    let network: NetworkService = NetworkAPIClient()
     var remoteRequestHandler: PostListRemoteDataManagerOutputProtocol?
     
-    func retrievePostList() {
-
+    func retrievePostList(valueOfAfterKey:String?) {
+        let endPoint = RedditAPI.getPost(valueOfAfterKey: valueOfAfterKey)
+        network.dataRequest(endPoint, objectType: PostModel.self) { [weak self] (result: Result<PostModel, NetworkError>) in
+            guard let self = self else { return }
+            switch result {
+            case let .success(response):
+                self.remoteRequestHandler?.onPostsRetrieved([response])
+            case .failure(_):
+                self.remoteRequestHandler?.onError()
+            }
+        }
     }
     
 }

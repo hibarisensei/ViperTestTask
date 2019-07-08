@@ -57,7 +57,7 @@ protocol PostListRemoteDataManagerInputProtocol: class {
     var remoteRequestHandler: PostListRemoteDataManagerOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
-    func retrievePostList()
+    func retrievePostList(valueOfAfterKey:String?)
 }
 
 protocol PostListRemoteDataManagerOutputProtocol: class {

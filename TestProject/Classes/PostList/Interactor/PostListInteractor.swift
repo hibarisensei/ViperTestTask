@@ -20,12 +20,12 @@ class PostListInteractor: PostListInteractorInputProtocol {
                     return PostModel(id: Int($0.id), title: $0.title!, imageUrl: $0.imageUrl!, thumbImageUrl: $0.thumbImageUrl!)
                 }
                 if  postModelList.isEmpty {
-                    remoteDatamanager?.retrievePostList()
+                    remoteDatamanager?.retrievePostList(valueOfAfterKey: nil)
                 }else{
                     presenter?.didRetrievePosts(postModelList)
                 }
             } else {
-                remoteDatamanager?.retrievePostList()
+                remoteDatamanager?.retrievePostList(valueOfAfterKey: nil)
             }
             
         } catch {

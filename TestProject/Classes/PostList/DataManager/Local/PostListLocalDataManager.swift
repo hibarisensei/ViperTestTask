@@ -12,13 +12,13 @@ class PostListLocalDataManager:PostListLocalDataManagerInputProtocol {
     
     func retrievePostList() throws -> [Post]  {
         
-        guard let managedOC = CoreDataStore.managedObjectContext else {
+        guard let managedObjectContext = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }
         
         let request: NSFetchRequest<Post> = NSFetchRequest(entityName: String(describing: Post.self))
         
-        return try managedOC.fetch(request)
+        return try managedObjectContext.fetch(request)
     }
     
     func savePost(id: Int, title: String, imageUrl: String, thumbImageUrl: String) throws {

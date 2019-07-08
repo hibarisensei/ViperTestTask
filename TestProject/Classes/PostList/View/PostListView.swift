@@ -18,7 +18,6 @@ class PostListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        tableView.tableFooterView = UIView()
     }
 }
 

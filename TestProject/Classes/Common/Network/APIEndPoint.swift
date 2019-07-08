@@ -24,9 +24,6 @@ protocol APIEndPoint: URLRequestConvertible {
 extension APIEndPoint {
     
     var headers: [String: String]? {
-        return [
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        ]
+        return [String: String]()
     }
 }

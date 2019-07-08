@@ -32,7 +32,7 @@ extension RedditAPI {
         switch self {
         case let .getPost(valueOfAfterKey): do {
             var defaultParameters = ["t": "all",
-                                     "limit": "10"]
+                                     "limit": "1"]
             if (valueOfAfterKey != nil) {
                 defaultParameters["after"] = valueOfAfterKey
             }

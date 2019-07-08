@@ -12,7 +12,7 @@ class PostListRemoteDataManager:PostListRemoteDataManagerInputProtocol {
     
     let network: NetworkService = NetworkAPIClient()
     var remoteRequestHandler: PostListRemoteDataManagerOutputProtocol?
-    
+    var valueOfAfterKey:String?
     func retrievePostList(valueOfAfterKey:String?) {
         let endPoint = RedditAPI.getPost(valueOfAfterKey: valueOfAfterKey)
         network.dataRequest(endPoint, objectType: PostModel.self) { [weak self] (result: Result<PostModel, NetworkError>) in
@@ -20,7 +20,8 @@ class PostListRemoteDataManager:PostListRemoteDataManagerInputProtocol {
             switch result {
             case let .success(response):
                 self.remoteRequestHandler?.onPostsRetrieved([response])
-            case .failure(_):
+            case let .failure(error):
+                print("\(error)")
                 self.remoteRequestHandler?.onError()
             }
         }

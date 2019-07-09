@@ -25,7 +25,7 @@ class PostListView: UIViewController {
 extension PostListView: PostListViewProtocol {
     
     func showPosts(with posts: [PostModel]) {
-        postList = posts
+        postList.append(contentsOf: posts)
         tableView.reloadData()
     }
     
@@ -54,5 +54,28 @@ extension PostListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.showPostDetail(forPost: postList[indexPath.row])
+    }
+}
+
+extension PostListView: TableviewPaginatorUIProtocol {
+
+    func getTableview(paginator: TableviewPaginator) -> UITableView {
+        return tableView
+    }
+
+    func shouldAddRefreshControl(paginator: TableviewPaginator) -> Bool {
+        return true
+    }
+
+    func getPaginatedLoadMoreCellHeight(paginator: TableviewPaginator) -> CGFloat {
+        return 44.0
+    }
+    
+    func getPaginatedLoadMoreCell(paginator: TableviewPaginator) -> UITableViewCell {
+        return UITableViewCell.init()
+    }
+    
+    func getRefreshControlTintColor(paginator: TableviewPaginator) -> UIColor {
+        return .red
     }
 }

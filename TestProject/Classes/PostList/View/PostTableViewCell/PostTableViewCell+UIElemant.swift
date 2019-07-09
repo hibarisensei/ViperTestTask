@@ -22,7 +22,6 @@ extension PostTableViewCell {
         addSubview(thumbnailImageView)
         addSubview(commentCountLabel)
         addSubview(dateLabel)
-        addSubview(authorLabel)
         addSubview(tittleLabel)
         addSubview(dissmissButton)
         addSubview(descriptionLabel)
@@ -33,7 +32,6 @@ extension PostTableViewCell {
         thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
         commentCountLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorLabel.translatesAutoresizingMaskIntoConstraints = false
         tittleLabel.translatesAutoresizingMaskIntoConstraints = false
         dissmissButton.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false

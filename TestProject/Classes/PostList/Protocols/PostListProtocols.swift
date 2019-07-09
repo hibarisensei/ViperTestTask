@@ -28,7 +28,8 @@ protocol PostListPresenterProtocol: class {
     var view: PostListViewProtocol? { get set }
     var interactor: PostListInteractorInputProtocol? { get set }
     var wireFrame: PostListWireFrameProtocol? { get set }
-    
+    var tableviewPaginator: TableviewPaginator? { get set }
+
     // VIEW -> PRESENTER
     func viewDidLoad()
     func showPostDetail(forPost post: PostModel)
@@ -62,7 +63,7 @@ protocol PostListRemoteDataManagerInputProtocol: class {
 
 protocol PostListRemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func onPostsRetrieved(_ posts: [PostModel])
+    func onPostsRetrieved(_ posts: [PostModel], _ afterKey: String)
     func onError()
 }
 

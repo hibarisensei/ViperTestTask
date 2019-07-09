@@ -49,6 +49,7 @@
 		B61CAD0522D529B50023F121 /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAD0422D529B50023F121 /* Date+TimeAgo.swift */; };
 		B61CAD0722D52ACF0023F121 /* Int+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAD0622D52ACF0023F121 /* Int+Date.swift */; };
 		B61CAD0922D52C010023F121 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAD0822D52C010023F121 /* UIImageView+DownloadImage.swift */; };
+		B61CAD0F22D53A850023F121 /* TableviewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CAD0E22D53A850023F121 /* TableviewPaginator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		B61CAD0422D529B50023F121 /* Date+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
 		B61CAD0622D52ACF0023F121 /* Int+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Date.swift"; sourceTree = "<group>"; };
 		B61CAD0822D52C010023F121 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		B61CAD0E22D53A850023F121 /* TableviewPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewPaginator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				B61CAD0422D529B50023F121 /* Date+TimeAgo.swift */,
 				B61CAD0622D52ACF0023F121 /* Int+Date.swift */,
 				B61CAD0822D52C010023F121 /* UIImageView+DownloadImage.swift */,
+				B61CAD0E22D53A850023F121 /* TableviewPaginator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				B61CACB622D3A6F10023F121 /* PostListInteractor.swift in Sources */,
 				B61CACBA22D3A7620023F121 /* PostListProtocols.swift in Sources */,
 				B61CACEA22D3C64A0023F121 /* APIConstants.swift in Sources */,
+				B61CAD0F22D53A850023F121 /* TableviewPaginator.swift in Sources */,
 				B61CACF422D510480023F121 /* PostTableViewCell+ReadStatusLayout.swift in Sources */,
 				B61CACA822D3A25B0023F121 /* Endpoints.swift in Sources */,
 				B61CACF722D5117E0023F121 /* PostTableViewCell+TittleLabelLayout.swift in Sources */,

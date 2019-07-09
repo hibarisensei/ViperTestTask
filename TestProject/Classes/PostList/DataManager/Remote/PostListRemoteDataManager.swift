@@ -22,7 +22,7 @@ class PostListRemoteDataManager:PostListRemoteDataManagerInputProtocol {
             case let .success(response):
                 print("\(response)")
                 DispatchQueue.main.async {
-                    self.remoteRequestHandler?.onPostsRetrieved(response.posts)
+                    self.remoteRequestHandler?.onPostsRetrieved(response.posts, response.after)
                 }
             case let .failure(error):
                 print("\(error)")

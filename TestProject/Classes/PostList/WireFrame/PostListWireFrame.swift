@@ -13,15 +13,17 @@ class PostListWireFrame: PostListWireFrameProtocol {
     class func createPostListModule() -> UIViewController {
         let postListView = PostListView()
         let presenter: PostListPresenterProtocol & PostListInteractorOutputProtocol = PostListPresenter()
-        let interactor: PostListInteractorInputProtocol & PostListRemoteDataManagerOutputProtocol = PostListInteractor()
+        let interactor: PostListInteractorInputProtocol & PostListRemoteDataManagerOutputProtocol & TableviewPaginatorProtocol = PostListInteractor()
         let localDataManager: PostListLocalDataManagerInputProtocol = PostListLocalDataManager()
         let remoteDataManager: PostListRemoteDataManagerInputProtocol = PostListRemoteDataManager()
         let wireFrame: PostListWireFrameProtocol = PostListWireFrame()
+        let tableviewPaginator: TableviewPaginator = TableviewPaginator.init(paginatorUI: postListView, delegate: interactor)
         
         postListView.presenter = presenter
         presenter.view = postListView
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
+        presenter.tableviewPaginator = tableviewPaginator
         interactor.presenter = presenter
         interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager

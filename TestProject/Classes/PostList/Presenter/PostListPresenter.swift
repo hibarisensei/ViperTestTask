@@ -12,8 +12,10 @@ class PostListPresenter: PostListPresenterProtocol {
     weak var view: PostListViewProtocol?
     var interactor: PostListInteractorInputProtocol?
     var wireFrame: PostListWireFrameProtocol?
+    var tableviewPaginator: TableviewPaginator?
     
     func viewDidLoad() {
+        tableviewPaginator?.initialSetup()
         view?.showLoading()
         interactor?.retrievePostList()
     }

@@ -12,7 +12,6 @@ class PostTableViewCell: UITableViewCell {
     static let cellId = "idPost"
    
     var tittleLabel:UILabel = UILabel()
-    var authorLabel:UILabel = UILabel()
     var dateLabel:UILabel = UILabel()
     var thumbnailImageView:UIImageView = UIImageView()
     var commentCountLabel:UILabel = UILabel()
@@ -33,7 +32,6 @@ class PostTableViewCell: UITableViewCell {
     func set(forPost post: PostModel) {
         self.selectionStyle = .none
         self.tittleLabel.text = post.title
-        self.authorLabel.text = post.author
         self.dateLabel.text = post.created.getDate().timeAgoSinceNow()
         self.thumbnailImageView.downloaded(from: post.thumbImageUrl)
         self.commentCountLabel.text = "\(post.numComments) comments"

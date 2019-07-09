@@ -12,7 +12,8 @@ class PostListInteractor: PostListInteractorInputProtocol {
     weak var presenter: PostListInteractorOutputProtocol?
     var localDatamanager: PostListLocalDataManagerInputProtocol?
     var remoteDatamanager: PostListRemoteDataManagerInputProtocol?
-    
+    var afterKey:String? = nil
+   
     func retrievePostList() {
         do {
             if let postList = try localDatamanager?.retrievePostList() {
@@ -21,12 +22,12 @@ class PostListInteractor: PostListInteractorInputProtocol {
 
                 }
                 if  postModelList.isEmpty {
-                    remoteDatamanager?.retrievePostList(valueOfAfterKey: nil)
+                    remoteDatamanager?.retrievePostList(valueOfAfterKey: afterKey)
                 }else{
                     presenter?.didRetrievePosts(postModelList)
                 }
             } else {
-                remoteDatamanager?.retrievePostList(valueOfAfterKey: nil)
+                remoteDatamanager?.retrievePostList(valueOfAfterKey: afterKey)
             }
             
         } catch {
@@ -38,7 +39,8 @@ class PostListInteractor: PostListInteractorInputProtocol {
 
 extension PostListInteractor: PostListRemoteDataManagerOutputProtocol {
     
-    func onPostsRetrieved(_ posts: [PostModel]) {
+    func onPostsRetrieved(_ posts: [PostModel], _ afterKey: String) {
+        self.afterKey = afterKey
         presenter?.didRetrievePosts(posts)
         
         for postModel in posts {
@@ -59,4 +61,10 @@ extension PostListInteractor: PostListRemoteDataManagerOutputProtocol {
         presenter?.onError()
     }
     
+}
+extension PostListInteractor: TableviewPaginatorProtocol {
+   
+    func loadPaginatedData(offset: Int, shouldAppend: Bool, paginator: TableviewPaginator) {
+        remoteDatamanager?.retrievePostList(valueOfAfterKey: afterKey)
+    }
 }

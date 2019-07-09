@@ -10,13 +10,14 @@ import UIKit
 
 class PostListView: UIViewController {
     
-    weak var tableView: UITableView!
-   
+    var tableView: UITableView!
+
     var presenter: PostListPresenterProtocol?
     var postList: [PostModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         presenter?.viewDidLoad()
     }
 }
@@ -41,12 +42,9 @@ extension PostListView: PostListViewProtocol {
 extension PostListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
         let post = postList[indexPath.row]
         cell.set(forPost: post)
-        
         return cell
     }
     

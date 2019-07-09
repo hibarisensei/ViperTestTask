@@ -11,7 +11,6 @@ import UIKit
 enum RedditAPI: APIEndPoint, URLRequestConvertible {
     
     case getPost(valueOfAfterKey: String?)
-    
 }
 
 extension RedditAPI {
@@ -32,13 +31,12 @@ extension RedditAPI {
         switch self {
         case let .getPost(valueOfAfterKey): do {
             var defaultParameters = ["t": "all",
-                                     "limit": "1"]
+                                     "limit": "10"]
             if (valueOfAfterKey != nil) {
                 defaultParameters["after"] = valueOfAfterKey
             }
             return defaultParameters
-        }
-            
+            }
         }
     }
 }

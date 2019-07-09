@@ -17,7 +17,8 @@ class PostListInteractor: PostListInteractorInputProtocol {
         do {
             if let postList = try localDatamanager?.retrievePostList() {
                 let postModelList = postList.map() {
-                    return PostModel(id: Int($0.id), title: $0.title!, imageUrl: $0.imageUrl!, thumbImageUrl: $0.thumbImageUrl!)
+                    return PostModel(id: $0.id!, title: $0.title!, thumbImageUrl: $0.thumbImageUrl!, numComments: Int($0.numComments), created: Int($0.created), author:  $0.author!)
+
                 }
                 if  postModelList.isEmpty {
                     remoteDatamanager?.retrievePostList(valueOfAfterKey: nil)
@@ -42,7 +43,12 @@ extension PostListInteractor: PostListRemoteDataManagerOutputProtocol {
         
         for postModel in posts {
             do {
-                try localDatamanager?.savePost(id: postModel.id, title: postModel.title, imageUrl: postModel.imageUrl, thumbImageUrl: postModel.thumbImageUrl)
+                try localDatamanager?.savePost(id: postModel.id,
+                                               title: postModel.title,
+                                               thumbImageUrl: postModel.thumbImageUrl,
+                                               numComments: postModel.numComments,
+                                               created: postModel.created,
+                                               author: postModel.author)
             } catch  {
                 
             }

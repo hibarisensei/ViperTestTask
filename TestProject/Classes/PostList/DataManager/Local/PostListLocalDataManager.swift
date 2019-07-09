@@ -21,17 +21,19 @@ class PostListLocalDataManager:PostListLocalDataManagerInputProtocol {
         return try managedObjectContext.fetch(request)
     }
     
-    func savePost(id: Int, title: String, imageUrl: String, thumbImageUrl: String) throws {
+    func savePost(id: String, title: String, thumbImageUrl: String, numComments: Int, created: Int, author: String) throws {
         guard let managedOC = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }
         
         if let newPost = NSEntityDescription.entity(forEntityName: "Post", in: managedOC) {
             let post = Post(entity: newPost, insertInto: managedOC)
-            post.id = Int32(id)
+            post.id = id
             post.title = title
-            post.imageUrl = imageUrl
             post.thumbImageUrl = thumbImageUrl
+            post.author = author
+            post.numComments = Int32(numComments)
+            post.created = Int32(created)
             try managedOC.save()
         }
         throw PersistenceError.couldNotSaveObject

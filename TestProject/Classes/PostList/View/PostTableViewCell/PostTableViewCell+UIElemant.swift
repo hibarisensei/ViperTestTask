@@ -42,6 +42,9 @@ extension PostTableViewCell {
     func setupUIElemant() {
         descriptionLabel.numberOfLines = 0
         tittleLabel.numberOfLines = 0
+        tittleLabel.lineBreakMode = .byWordWrapping
+        dateLabel.textAlignment = .right
+        commentCountLabel.textAlignment = .right
         dissmissButton.setTitle("Dismiss post", for: .normal)
     }
 }

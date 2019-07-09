@@ -43,10 +43,19 @@ extension PostTableViewCell {
                                                             multiplier: 1.0,
                                                             constant: 0.0)
         
+        let dateLabelWidthConstraint = NSLayoutConstraint(item: dateLabel,
+                                                            attribute: .width,
+                                                            relatedBy: .greaterThanOrEqual,
+                                                            toItem: nil,
+                                                            attribute: .width,
+                                                            multiplier: 1.0,
+                                                            constant: 100.0)
+        
         self.addConstraints([dateLabelTopConstraint,
                              dateLabelLeftConstraint,
                              dateLabelRightConstraint,
-                             dateLabelCenterXConstraint])
+                             dateLabelCenterXConstraint,
+                             dateLabelWidthConstraint])
 
     }
 }

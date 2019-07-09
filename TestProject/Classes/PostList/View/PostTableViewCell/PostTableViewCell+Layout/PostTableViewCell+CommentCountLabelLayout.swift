@@ -49,7 +49,7 @@ extension PostTableViewCell {
                                                                   toItem: nil,
                                                                   attribute: .width,
                                                                   multiplier: 1.0,
-                                                                  constant: 120.0)
+                                                                  constant: 140.0)
         
         let commentCountLabelCenterXConstraint = NSLayoutConstraint(item: commentCountLabel,
                                                                     attribute: .centerY,

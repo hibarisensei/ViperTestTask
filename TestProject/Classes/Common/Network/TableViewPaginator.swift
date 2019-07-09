@@ -1,5 +1,5 @@
 //
-//  TableviewPaginator.swift
+//  TableViewPaginator.swift
 //  TestProject
 //
 //  Created by Serhey Bilous on 7/10/19.
@@ -130,4 +130,3 @@ public class TableviewPaginator {
         }
     }
 }
-
